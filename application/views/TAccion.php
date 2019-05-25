@@ -3,6 +3,7 @@
 		<div class="col-sm-12">
 			<div class="col-md-12 col-sm-6 col-xs-12">
 				<h1>Edificios&nbsp;<span class="ion ion-android-home"></span></h1>
+				<!-- <?php $ardat = $this->session->userdata("logged_in");echo $ardat['ou']; echo $ardat['pd'];   ?> -->
 			</div>
 			<div class="col-md-12 col-sm-6 col-xs-12">
 				<div class="row">
@@ -37,7 +38,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="box box-success">
-				<form method="POST" action="<?php echo base_url('/TourUtec_Admin/Seccion/Buscar') ?>" name="formFil">
+				<form method="POST" action="<?php echo base_url('/TourUtec_Admin/Edificios/Buscar') ?>" name="formFil">
 					<div class="box-header with-border">
 						<h4>Filtros</h4>
 					</div>
@@ -108,17 +109,16 @@
 								<td>Text2</td>
 								<td>Text3</td>
 							</tr> -->
-								<?php if (!empty($lstEdificios)) {
-									foreach ($lstEdificios as $ed) { ?>
+								<?php if (!empty($listado)) {
+									foreach ($listado as $obj) { ?>
 										<tr>
-											<td><?php echo $ed->edf_codigo ?></td>
-											<td><?php echo $ed->edf_nombre ?></td>
-											<td><?php echo $ed->edf_acronimo ?></td>
+											<td><?php echo $obj->tia_codigo; ?></td>
+											<td><?php echo $obj->tia_nombre; ?></td>
 											<td class="text-center">
-												<a href="#" name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_orden ?>','<?php echo $ed->edf_latitud ?>','<?php echo $ed->edf_longitud ?>','<?php echo $ed->edf_acronimo ?>')">Modificar</a>
+												<a href="#" name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('')">Modificar</a>
 											</td>
 											<td>
-												<input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
+												<input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php ?>" />
 											</td>
 										</tr>
 									<?php }
