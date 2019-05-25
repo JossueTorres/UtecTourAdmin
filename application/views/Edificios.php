@@ -3,6 +3,7 @@
 		<div class="col-sm-12">
 			<div class="col-md-12 col-sm-6 col-xs-12">
 				<h1>Edificios&nbsp;<span class="ion ion-android-home"></span></h1>
+				<!-- <?php $ardat = $this->session->userdata("logged_in");echo $ardat['ou']; echo $ardat['pd'];   ?> -->
 			</div>
 			<div class="col-md-12 col-sm-6 col-xs-12">
 				<div class="row">
@@ -111,9 +112,9 @@
 								<?php if (!empty($lstEdificios)) {
 									foreach ($lstEdificios as $ed) { ?>
 										<tr>
-											<td><?php echo $ed->edf_codigo ?></td>
-											<td><?php echo $ed->edf_nombre ?></td>
-											<td><?php echo $ed->edf_acronimo ?></td>
+											<td><?php echo $ed->edf_codigo; ?></td>
+											<td><?php echo $ed->edf_nombre; ?></td>
+											<td><?php echo $ed->edf_acronimo; ?></td>
 											<td class="text-center">
 												<a href="#" name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_orden ?>','<?php echo $ed->edf_latitud ?>','<?php echo $ed->edf_longitud ?>','<?php echo $ed->edf_acronimo ?>')">Modificar</a>
 											</td>

@@ -3,9 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Edificios_controller extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		//verificar la session de usuario
+		$ardat = $this->session->userdata();
+		if (!$ardat['login']) {
+			redirect(base_url('/Login'));
+		}
+		$this->output->set_header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
+		$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+		$this->output->set_header('Pragma: no-cache');
+		$this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+	}
 	public function index()
 	{
-		$url = base_url('/Tour-Api/Edificios/listaEdificios');
+		$url = 'http://localhost/UtecTourServices/Edificios/listado';
 		//creamos
 		$ch = curl_init($url);
 
@@ -18,6 +31,7 @@ class Edificios_controller extends CI_Controller
 		//cerramos
 		curl_close($ch);
 
+		$res = json_decode($result);
 		$data['lstEdificios'] = json_decode($result);
 		$this->load->view('_Layout/Header_Master');
 		$this->load->view('Edificios', $data);
@@ -56,7 +70,7 @@ class Edificios_controller extends CI_Controller
 		$lo = $this->input->post("txtLongitud");
 		$a = $this->input->post("txtAcronimo");
 		$i = $this->input->post("txtPath");
-		$url = base_url('/Tour-Api/Edificios/guardarDatos/?c=' . $c . 'n=' . $n . '&o=' . $o . '&l=' . $l . '&lo=' . $lo . '&a=' . $a.'&i'.$i);
+		$url = base_url('/Tour-Api/Edificios/guardarDatos/?c=' . $c . 'n=' . $n . '&o=' . $o . '&l=' . $l . '&lo=' . $lo . '&a=' . $a . '&i' . $i);
 		//creamos nuevo recurso cURL 
 		$ch = curl_init($url);
 
@@ -88,8 +102,8 @@ class Edificios_controller extends CI_Controller
 	}
 
 	public function borrarDatos($ids)
-	{		
-		$url = base_url('/Tour-Api/Edificios/listaEdificios_fil/?c='.$c);
+	{
+		$url = base_url('/Tour-Api/Edificios/listaEdificios_fil/?c=' . $c);
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

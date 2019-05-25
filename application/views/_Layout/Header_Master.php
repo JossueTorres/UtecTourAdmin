@@ -8,20 +8,20 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/font-awesome/css/font-awesome.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/bower_components/font-awesome/css/font-awesome.min.css'); ?>">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/Ionicons/css/ionicons.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/bower_components/Ionicons/css/ionicons.min.css'); ?>">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/jvectormap/jquery-jvectormap.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/bower_components/jvectormap/jquery-jvectormap.css'); ?>">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/dist/css/AdminLTE.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/dist/css/AdminLTE.min.css'); ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/dist/css/skins/skin-utec.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/assets/dist/css/skins/skin-utec.css'); ?>">
   <!-- jQuery 3 -->
-  <script src="<?php echo base_url('TourUtec_Admin/assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -58,26 +58,27 @@
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
-                <span class="hidden-xs">Alexander Pierce</span>
+                <img src="<?php echo base_url('/assets/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $this->session->userdata("nom"); ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
-
+                  <img src="<?php echo base_url('/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
                   <p>
-                    Alexander Pierce
+                    <?php echo $this->session->userdata("nom");  ?>
                   </p>
                 </li>
                 <!-- Menu Body -->
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <div class="pull-left">
+                  <!-- <div class="pull-left">
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                  </div>
+                  </div> -->
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                    <form name="frmLogout" method="POST" action="<?php echo base_url('/Logout'); ?>">
+                      <button role="button" type="submit" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                    </form>
                   </div>
                 </li>
               </ul>
@@ -94,10 +95,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+            <img src="<?php echo base_url('/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p> <?php echo $this->session->userdata("nom");  ?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
